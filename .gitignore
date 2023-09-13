@@ -162,3 +162,5 @@ cython_debug/
 
 # model folder removed due to size
 model/
+# test code
+test*.py
