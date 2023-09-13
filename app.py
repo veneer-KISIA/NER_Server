@@ -1,4 +1,5 @@
 from flask import Flask, request, jsonify
+from ner import get_predict
 
 app = Flask(__name__)
 
@@ -11,18 +12,13 @@ def ner_endpoint():
         # 수신된 데이터 중 텍스트 부분 추출
         text = data.get('text', '')
 
-        # 텍스트를 공백으로 분할하여 단어 목록 생성
-        words = text.split()
-
-        if words:
-            # 마지막 단어를 [MASK]로 수정
-            words[-1] = '[MASK]'
-            modified_text = ' '.join(words)
-            print(text)
-            print('\n'+modified_text)
+        if text:
+            # ner 모델 호출
+            modified_text = get_predict(text)
+            
 
             # 수정된 데이터를 STT 서버로 반환
-            return jsonify(modified_text=modified_text), 200, {'Content-Type': 'application/json; charset=utf-8'}
+            return jsonify(modified_text=modified_text), 200
         else:
             return jsonify(error='데이터에 텍스트가 없습니다.'), 400
 

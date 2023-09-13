@@ -1,0 +1,7 @@
+flask
+flask-sslify
+transformers==4.32.0
+torch==2.0.1 
+sentencepiece==0.1.99
+seqeval
+easydict
