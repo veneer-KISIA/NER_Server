@@ -4,7 +4,7 @@ from predict import predict
 def get_predict(text):
 
     pred_config = argparse.Namespace()
-    predict_labels = ['LCP_COUNTY', 'OGG_EDUCATION', 'OGG_MEDICINE','PS_NAME', 'PS_PET', 'QT_AGE', 'TMM_DISEASE', 'TMM_DRUG']
+    predict_labels = ['LCP_COUNTY', 'OGG_EDUCATION', 'OGG_MEDICINE','PS_NAME', 'PS_PET', 'QT_AGE', 'QT_ADDRESS','TMM_DISEASE', 'TMM_DRUG']
 
     pred_config.input_text = text
     pred_config.model_dir = './model'
@@ -15,4 +15,4 @@ def get_predict(text):
     return predict(pred_config)
 
 if __name__ == "__main__":
-    print(get_predict('서울시 강남구에 사는 직장인 홍길동.'))
+    print(get_predict('서울시 강남구 103-1000에 사는 직장인 홍길동.'))
